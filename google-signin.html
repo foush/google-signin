@@ -463,6 +463,14 @@ any apps you're building. See the Google Developers Console
           type: Boolean,
           notify: true,
           value: false
+        },
+
+        /**
+         * Property indicating the default sign-in behavior is overridden.
+         */
+        clickOverride: {
+          type: Boolean,
+          value: false
         }
 
       },
@@ -540,6 +548,9 @@ any apps you're building. See the Google Developers Console
        * The dialog will be blocked by a popup blocker unless called inside click handler.
        */
       signIn: function () {
+        if (this.clickOverride) {
+          return;
+        }
         this.$.aware.signIn();
       },
 
